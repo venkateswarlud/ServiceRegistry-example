@@ -1,0 +1,36 @@
+spring:
+  main:
+    banner-mode: 'OFF'
+  profiles:
+    active: local
+  application:
+    name: demo
+server:
+  port: 9999
+  context-path: /
+
+---
+
+spring:
+  profiles: local
+
+kafka.broker: localhost:9092
+enable.auto.commit: false
+auto.commit.interval.ms: 100
+session.timeout.ms: 15000
+group.id: test-consumer-group
+kafka.auto.offset.reset: earliest
+kafka-wd-jas-superorg.topic: test
+kafka.concurrency: 1
+kafka.client.id: localclient
+logging:
+  file: /logs/dev_app.log
+pattern:
+  console: "%d %-slevel %logger : %msg%n"
+  file:   "%d %-5level [%thread] %logger :%msg%n"
+level:
+  con.example.demo: INFO
+
+
+---
+
